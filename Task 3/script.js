@@ -1,12 +1,21 @@
-let celsius = document.getElementById('celsius');
-let fahrenheit = document.getElementById('fahrenheit');
+document.getElementById('convert').onclick = tempConvert;
+document.getElementById('clear').onclick = clearForm;
 
-celsius.oninput = () => {
-    let output = (parseFloat(celsius.value) * 9) / 5 + 32;
-    fahrenheit.value = parseFloat(output.toFixed(2));
-};
+function tempConvert() {
+    var fahrenheit = document.getElementById("fahrenheit").value;
+    var celsius = document.getElementById("celsius").value;
 
-fahrenheit.oninput = () => {
-    let output = ((parseFloat(fahrenheit.value) - 32) * 5) / 9;
-    celsius.value = parseFloat(output.toFixed(2));
-};
+    if (fahrenheit != '') {
+        celsius = (parseFloat(fahrenheit) - 32) / 1.8;
+    } else {
+        fahrenheit = (parseFloat(celsius) * 1.8) + 32;
+    }
+
+    document.getElementById('fahrenheit').value = parseFloat(fahrenheit).toFixed(1);
+    document.getElementById('celsius').value = parseFloat(celsius).toFixed(1);
+}
+
+function clearForm() {
+    document.getElementById('fahrenheit').value = '';
+    document.getElementById('celsius').value = '';
+}
